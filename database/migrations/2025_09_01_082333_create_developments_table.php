@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('social_assistances', function (Blueprint $table) {
+        Schema::create('developments', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('thumbnail');
             $table->string('name');
-            $table->enum('category', ['staple','cash', 'subsidized fuel', 'health']);
-            $table->decimal('amount', 10, 2);
-            $table->string('provider');
             $table->longText('description');
-            $table->boolean('is_available')->default(true);
+            $table->string('person_in_charge');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->decimal('amount', 10, 2);
+            $table->enum('status', ['on_progress', 'completed']);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('social_assistances');
+        Schema::dropIfExists('developments');
     }
 };

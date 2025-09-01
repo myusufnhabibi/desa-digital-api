@@ -10,12 +10,17 @@ class SocialAssistance extends Model
 {
     use SoftDeletes, UUID;
     protected $fillable = [
-        'name',
         'thumbnail',
+        'name',
         'category',
         'amount',
         'provider',
         'description',
         'is_available'
     ];
+
+    public function socialAssistanceRecepient()
+    {
+        return $this->hasMany(SocialAssistanceRecepient::class);
+    }
 }

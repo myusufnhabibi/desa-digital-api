@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('social_assistances', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('thumbnail');
             $table->string('name');
-            $table->enum('category', ['staple','cash', 'subsidized fuel', 'health']);
-            $table->decimal('amount', 10, 2);
-            $table->string('provider');
-            $table->longText('description');
-            $table->boolean('is_available')->default(true);
+            $table->longText('about');
+            $table->string('headman');
+            $table->integer('people');
+            $table->decimal('agricultural_area', 16, 2);
+            $table->decimal('total_area',16, 2);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('social_assistances');
+        Schema::dropIfExists('profiles');
     }
 };
