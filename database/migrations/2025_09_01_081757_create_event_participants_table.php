@@ -16,7 +16,7 @@ return new class extends Migration
             $table->uuid('event_id');
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
             $table->uuid('head_of_family_id');
-            $table->foreign('head_of_family_id')->references('id')->on('heads_of_families')->onDelete('cascade');
+            $table->foreign('head_of_family_id')->references('id')->on('head_of_families')->onDelete('cascade');
             $table->integer('quantity');
             $table->decimal('total_price', 10, 2);
             $table->string('payment_status');
