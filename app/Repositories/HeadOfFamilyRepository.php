@@ -64,4 +64,58 @@ class HeadOfFamilyRepository implements \App\Interfaces\HeadOfFamilyInterface
             throw new \Exception($e->getMessage());
         }
     }
+
+    public function show(string $id)
+    {
+        $headOfFamily = HeadOfFamily::where('id', $id)->first();
+        return $headOfFamily;
+    }
+
+    public function update(string $id, array $data)
+    {
+        DB::beginTransaction();
+        try {
+            $headOfFamily = HeadOfFamily::findOrFail($id);
+
+            if (isset($data['profile_picture'])) {
+                $headOfFamily->profile_picture = $data['profile_picture']->store('assets/profile_pictures', 'public');
+            }
+            $headOfFamily->identity_number = $data['identity_number'];
+            $headOfFamily->gender = $data['gender'];
+            $headOfFamily->date_of_birth = $data['date_of_birth'];
+            $headOfFamily->phone_number = $data['phone_number'];
+            $headOfFamily->ocupation = $data['ocupation'];
+            $headOfFamily->marital_status = $data['marital_status'];
+            $headOfFamily->save();
+
+            $userRepository = new UserRepository();
+            $userRepository->update($headOfFamily->user_id, [
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => $data['password'] ?? null,
+            ]);
+
+            DB::commit();
+            return $headOfFamily;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw new \Exception($e->getMessage());
+        }
+
+    }
+
+    public function delete(string $id)
+    {
+        DB::beginTransaction();
+        try {
+            $headOfFamily = HeadOfFamily::find($id);
+            $headOfFamily->delete();
+             DB::commit();
+            return true;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw new \Exception($e->getMessage());
+        }
+
+    }
 }
