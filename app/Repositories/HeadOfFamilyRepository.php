@@ -48,7 +48,7 @@ class HeadOfFamilyRepository implements \App\Interfaces\HeadOfFamilyInterface
 
             $headOfFamily = new HeadOfFamily();
             $headOfFamily->user_id = $user->id;
-            $headOfFamily->profile_picture = $data['profile_picture']->store('assets/profile_pictures', 'public');
+            $headOfFamily->profile_picture = $data['profile_picture']->store('assets/head_of_families', 'public');
             $headOfFamily->identity_number = $data['identity_number'];
             $headOfFamily->gender = $data['gender'];
             $headOfFamily->date_of_birth = $data['date_of_birth'];
@@ -78,7 +78,7 @@ class HeadOfFamilyRepository implements \App\Interfaces\HeadOfFamilyInterface
             $headOfFamily = HeadOfFamily::findOrFail($id);
 
             if (isset($data['profile_picture'])) {
-                $headOfFamily->profile_picture = $data['profile_picture']->store('assets/profile_pictures', 'public');
+                $headOfFamily->profile_picture = $data['profile_picture']->store('assets/head_of_families', 'public');
             }
             $headOfFamily->identity_number = $data['identity_number'];
             $headOfFamily->gender = $data['gender'];

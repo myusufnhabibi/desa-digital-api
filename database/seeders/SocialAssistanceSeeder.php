@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use Database\Factories\UserFactory;
+use Database\Factories\SocialAssistanceFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class UserSeeder extends Seeder
+class SocialAssistanceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        UserFactory::new()->count(15)->create();
+        SocialAssistanceFactory::new()->count(10)->create();
     }
 }
