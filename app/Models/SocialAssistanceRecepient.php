@@ -21,6 +21,16 @@ class SocialAssistanceRecepient extends Model
         'status'
     ];
 
+    public function scopeSearch($query, $search)
+    {
+        $query->whereHas('headOfFamily', function ($q) use ($search) {
+            $q->whereHas('user', function ($q2) use ($search) {
+                $q2->where('name', 'LIKE', "%$search%")
+                    ->orWhere('email', 'LIKE', "%$search%");
+            });
+        });
+    }
+
     public function socialAssistance()
     {
         return $this->belongsTo(SocialAssistance::class);

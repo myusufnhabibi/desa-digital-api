@@ -8,7 +8,6 @@ use App\Http\Requests\FamilyMemberUpdateRequest;
 use App\Http\Resources\FamilyMemberResource;
 use App\Http\Resources\PaginateResource;
 use App\Interfaces\FamilyMemberInterface;
-use App\Models\FamilyMember;
 use Illuminate\Http\Request;
 
 class FamilyMemberController extends Controller

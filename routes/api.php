@@ -15,3 +15,6 @@ Route::get("family-member/all/paginated", [\App\Http\Controllers\FamilyMemberCon
 Route::apiResource("social-assistance", \App\Http\Controllers\SocialAssistanceController::class);
 Route::get("social-assistance/all/paginated", [\App\Http\Controllers\SocialAssistanceController::class, 'getAllPaginated']);
 
+Route::apiResource("social-assistance-recepient", \App\Http\Controllers\SocialAssistanceRecepientController::class);
+Route::get("social-assistance-recepient/all/paginated", [\App\Http\Controllers\SocialAssistanceRecepientController::class, 'getAllPaginated']);
+

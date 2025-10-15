@@ -30,6 +30,11 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Interfaces\SocialAssistanceInterface::class,
             \App\Repositories\SocialAssistanceRepositroy::class
         );
+
+        $this->app->bind(
+            \App\Interfaces\SocialAssistanceRecepientsInterface::class,
+            \App\Repositories\SocialAssistanceRecepientsRepository::class
+        );
     }
 
     /**
