@@ -35,6 +35,11 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Interfaces\SocialAssistanceRecepientsInterface::class,
             \App\Repositories\SocialAssistanceRecepientsRepository::class
         );
+
+        $this->app->bind(
+            \App\Interfaces\EventInterface::class,
+            \App\Repositories\EventRepository::class
+        );
     }
 
     /**

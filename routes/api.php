@@ -18,3 +18,5 @@ Route::get("social-assistance/all/paginated", [\App\Http\Controllers\SocialAssis
 Route::apiResource("social-assistance-recepient", \App\Http\Controllers\SocialAssistanceRecepientController::class);
 Route::get("social-assistance-recepient/all/paginated", [\App\Http\Controllers\SocialAssistanceRecepientController::class, 'getAllPaginated']);
 
+Route::apiResource("event", \App\Http\Controllers\EventController::class);
+Route::get("event/all/paginated", [\App\Http\Controllers\EventController::class, 'getAllPaginated']);
