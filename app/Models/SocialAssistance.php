@@ -20,6 +20,7 @@ class SocialAssistance extends Model
     ];
 
     protected $casts = [
+        'amount' => 'decimal:2',
         'is_available' => 'boolean',
     ];
 

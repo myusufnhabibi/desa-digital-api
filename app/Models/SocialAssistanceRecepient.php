@@ -21,6 +21,11 @@ class SocialAssistanceRecepient extends Model
         'status'
     ];
 
+    protected $casts = [
+        'amount' => 'decimal:2',
+        'status' => 'boolean',
+    ];
+
     public function scopeSearch($query, $search)
     {
         $query->whereHas('headOfFamily', function ($q) use ($search) {

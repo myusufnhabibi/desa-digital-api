@@ -45,6 +45,11 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Interfaces\EventParticipantInterface::class,
             \App\Repositories\EventParticipantRepository::class
         );
+
+        $this->app->bind(
+            \App\Interfaces\DevelopmentInterface::class,
+            \App\Repositories\DevelopmentRepository::class
+        );
     }
 
     /**
