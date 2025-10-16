@@ -40,6 +40,11 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Interfaces\EventInterface::class,
             \App\Repositories\EventRepository::class
         );
+
+        $this->app->bind(
+            \App\Interfaces\EventParticipantInterface::class,
+            \App\Repositories\EventParticipantRepository::class
+        );
     }
 
     /**

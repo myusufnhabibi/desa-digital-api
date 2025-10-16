@@ -18,6 +18,23 @@ class EventParticipant extends Model
         'payment_status',
     ];
 
+    protected $casts = [
+        'quantity' => 'integer',
+        'total_price' => 'decimal:2',
+    ];
+
+    public function scopeSearch($query, $search)
+    {
+        return $query->whereHas('headOfFamily', function ($q) use ($search) {
+            $q->whereHas('user', function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%$search%")
+                    ->orWhere('email', 'LIKE', "%$search%");
+            });
+        })->orWhereHas('event', function ($q) use ($search) {
+            $q->where('name', 'LIKE', "%$search%");
+        });
+    }
+
     public function event()
     {
         return $this->belongsTo(Event::class);

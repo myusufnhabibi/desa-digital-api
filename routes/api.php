@@ -20,3 +20,6 @@ Route::get("social-assistance-recepient/all/paginated", [\App\Http\Controllers\S
 
 Route::apiResource("event", \App\Http\Controllers\EventController::class);
 Route::get("event/all/paginated", [\App\Http\Controllers\EventController::class, 'getAllPaginated']);
+
+Route::apiResource("event-participant", \App\Http\Controllers\EventParticipantController::class);
+Route::get("event-participant/all/paginated", [\App\Http\Controllers\EventParticipantController::class, 'getAllPaginated']);
