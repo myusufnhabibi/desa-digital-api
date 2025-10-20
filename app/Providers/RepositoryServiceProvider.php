@@ -50,6 +50,11 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Interfaces\DevelopmentInterface::class,
             \App\Repositories\DevelopmentRepository::class
         );
+
+        $this->app->bind(
+            \App\Interfaces\DevelopmentApplicantInterface::class,
+            \App\Repositories\DevelopmentApplicantRepository::class
+        );
     }
 
     /**

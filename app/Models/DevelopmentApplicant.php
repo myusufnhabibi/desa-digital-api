@@ -16,6 +16,14 @@ class DevelopmentApplicant extends Model
         'status',
     ];
 
+    public function scopeSearch($query, $keyword)
+    {
+        $query->whereHas('user', function ($q) use ($keyword) {
+            $q->where('name', 'LIKE', "%$keyword%")
+              ->orWhere('email', 'LIKE', "%$keyword%");
+        });
+    }
+
     public function development()
     {
         return $this->belongsTo(Development::class);

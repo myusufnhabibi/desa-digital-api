@@ -26,3 +26,6 @@ Route::get("event-participant/all/paginated", [\App\Http\Controllers\EventPartic
 
 Route::apiResource("development", \App\Http\Controllers\DevelopmentController::class);
 Route::get("development/all/paginated", [\App\Http\Controllers\DevelopmentController::class, 'getAllPaginated']);
+
+Route::apiResource("development-applicant", \App\Http\Controllers\DevelopmentApplicantController::class);
+Route::get("development-applicant/all/paginated", [\App\Http\Controllers\DevelopmentApplicantController::class, 'getAllPaginated']);
