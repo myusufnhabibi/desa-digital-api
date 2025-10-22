@@ -55,6 +55,11 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Interfaces\DevelopmentApplicantInterface::class,
             \App\Repositories\DevelopmentApplicantRepository::class
         );
+
+        $this->app->bind(
+            \App\Interfaces\ProfileInterface::class,
+            \App\Repositories\ProfileRepository::class
+        );
     }
 
     /**

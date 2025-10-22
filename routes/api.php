@@ -29,3 +29,8 @@ Route::get("development/all/paginated", [\App\Http\Controllers\DevelopmentContro
 
 Route::apiResource("development-applicant", \App\Http\Controllers\DevelopmentApplicantController::class);
 Route::get("development-applicant/all/paginated", [\App\Http\Controllers\DevelopmentApplicantController::class, 'getAllPaginated']);
+
+// Route::apiResource("profile", \App\Http\Controllers\ProfileController::class);
+Route::get("profile", [\App\Http\Controllers\ProfileController::class, 'index']);
+Route::post("profile", [\App\Http\Controllers\ProfileController::class, 'store']);
+Route::put("profile", [\App\Http\Controllers\ProfileController::class, 'update']);
