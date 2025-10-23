@@ -9,14 +9,26 @@ use App\Http\Resources\EventParticipantResource;
 use App\Http\Resources\PaginateResource;
 use App\Interfaces\EventParticipantInterface;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
+use Spatie\Permission\Middleware\PermissionMiddleware;
 
-class EventParticipantController extends Controller
+class EventParticipantController extends Controller implements HasMiddleware
 {
     private EventParticipantInterface $eventParticipantRepository;
 
     public function __construct(EventParticipantInterface $eventParticipantRepository)
     {
         $this->eventParticipantRepository = $eventParticipantRepository;
+    }
+
+    public static function middleware() {
+        return [
+            new Middleware(PermissionMiddleware::using(['event-participant-list|event-participant-create|event-participant-edit|event-participant-delete']), ['only' => ['index','show','getAllPaginated']]),
+            new Middleware(PermissionMiddleware::using(['event-participant-create']), ['only' => ['store']]),
+            new Middleware(PermissionMiddleware::using(['event-participant-edit']), ['only' => ['update']]),
+            new Middleware(PermissionMiddleware::using(['event-participant-delete']), ['only' => ['destroy']]),
+        ];
     }
 
     public function index(Request $request)
