@@ -25,10 +25,10 @@ class HeadOfFamilyController extends Controller implements HasMiddleware
 
     public static function middleware() {
         return [
-            new Middleware(PermissionMiddleware::using(['head-of-family-list|head-of-family-create|head-of-family-edit|head-of-family-delete']), ['only' => ['index','show','getAllPaginated']]),
-            new Middleware(PermissionMiddleware::using(['head-of-family-create']), ['only' => ['store']]),
-            new Middleware(PermissionMiddleware::using(['head-of-family-edit']), ['only' => ['update']]),
-            new Middleware(PermissionMiddleware::using(['head-of-family-delete']), ['only' => ['destroy']]),
+            new Middleware(PermissionMiddleware::using(['head-of-family-list|head-of-family-create|head-of-family-edit|head-of-family-delete']), only: ['index','show','getAllPaginated']),
+            new Middleware(PermissionMiddleware::using(['head-of-family-create']), only: ['store']),
+            new Middleware(PermissionMiddleware::using(['head-of-family-edit']), only: ['update']),
+            new Middleware(PermissionMiddleware::using(['head-of-family-delete']), only: ['destroy']),
         ];
     }
     /**

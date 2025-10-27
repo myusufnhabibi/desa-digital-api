@@ -25,10 +25,10 @@ class EventController extends Controller implements HasMiddleware
     public static function middleware()
     {
         return [
-            new Middleware(PermissionMiddleware::using(['event-list|event-create|event-edit|event-delete']), ['only' => ['index', 'show', 'getAllPaginated']]),
-            new Middleware(PermissionMiddleware::using(['event-create']), ['only' => ['store']]),
-            new Middleware(PermissionMiddleware::using(['event-edit']), ['only' => ['update']]),
-            new Middleware(PermissionMiddleware::using(['event-delete']), ['only' => ['destroy']]),
+            new Middleware(PermissionMiddleware::using(['event-list|event-create|event-edit|event-delete']), only: ['index', 'show', 'getAllPaginated']),
+            new Middleware(PermissionMiddleware::using(['event-create']), only: ['store']),
+            new Middleware(PermissionMiddleware::using(['event-edit']), only: ['update']),
+            new Middleware(PermissionMiddleware::using(['event-delete']), only: ['destroy']),
         ];
     }
     /**

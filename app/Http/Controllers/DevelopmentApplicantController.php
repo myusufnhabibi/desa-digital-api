@@ -23,12 +23,13 @@ class DevelopmentApplicantController extends Controller implements HasMiddleware
         $this->developmentApplicantRepository = $developmentApplicantRepository;
     }
 
-    public static function middleware() {
+    public static function middleware()
+    {
         return [
-            new Middleware(PermissionMiddleware::using(['development-applicant-list|development-applicant-create|development-applicant-edit|development-applicant-delete']), ['only' => ['index','show','getAllPaginated']]),
-            new Middleware(PermissionMiddleware::using(['development-applicant-create']), ['only' => ['store']]),
-            new Middleware(PermissionMiddleware::using(['development-applicant-edit']), ['only' => ['update']]),
-            new Middleware(PermissionMiddleware::using(['development-applicant-delete']), ['only' => ['destroy']]),
+            new Middleware(PermissionMiddleware::using(['development-applicant-list|development-applicant-create|development-applicant-edit|development-applicant-delete']), only: ['index', 'show', 'getAllPaginated']),
+            new Middleware(PermissionMiddleware::using(['development-applicant-create']), only: ['store']),
+            new Middleware(PermissionMiddleware::using(['development-applicant-edit']), only: ['update']),
+            new Middleware(PermissionMiddleware::using(['development-applicant-delete']), only: ['destroy']),
         ];
     }
 
@@ -37,7 +38,7 @@ class DevelopmentApplicantController extends Controller implements HasMiddleware
         try {
             $developmentApplicants = $this->developmentApplicantRepository->getAll($request->search, $request->limit, true);
 
-            return ResponseHelper::jsonResponse(true, 'Data development applicants berhasil diambil', DevelopmentApplicantResource::collection($developmentApplicants) , 200);
+            return ResponseHelper::jsonResponse(true, 'Data development applicants berhasil diambil', DevelopmentApplicantResource::collection($developmentApplicants), 200);
         } catch (\Exception $e) {
             return ResponseHelper::jsonResponse(false, 'Terjadi kesalahan: ' . $e->getMessage(), null, 500);
 
@@ -54,7 +55,7 @@ class DevelopmentApplicantController extends Controller implements HasMiddleware
         try {
             $developmentApplicants = $this->developmentApplicantRepository->getAllPaginated($request['search'] ?? null, $request['row_per_page']);
 
-            return ResponseHelper::jsonResponse(true, 'Data development applicants berhasil diambil', PaginateResource::make($developmentApplicants, DevelopmentApplicantResource::class) , 200);
+            return ResponseHelper::jsonResponse(true, 'Data development applicants berhasil diambil', PaginateResource::make($developmentApplicants, DevelopmentApplicantResource::class), 200);
         } catch (\Exception $e) {
             return ResponseHelper::jsonResponse(false, 'Terjadi kesalahan: ' . $e->getMessage(), null, 500);
 
@@ -88,7 +89,8 @@ class DevelopmentApplicantController extends Controller implements HasMiddleware
         }
     }
 
-    public function update(DevelopmentApplicantUpdateRequest $request, $id) {
+    public function update(DevelopmentApplicantUpdateRequest $request, $id)
+    {
         $data = $request->validated();
 
         try {

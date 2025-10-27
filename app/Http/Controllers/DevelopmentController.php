@@ -25,10 +25,10 @@ class DevelopmentController extends Controller implements HasMiddleware
 
     public static function middleware() {
         return [
-            new Middleware(PermissionMiddleware::using(['development-list|development-create|development-edit|development-delete']), ['only' => ['index','show','getAllPaginated']]),
-            new Middleware(PermissionMiddleware::using(['development-create']), ['only' => ['store']]),
-            new Middleware(PermissionMiddleware::using(['development-edit']), ['only' => ['update']]),
-            new Middleware(PermissionMiddleware::using(['development-delete']), ['only' => ['destroy']]),
+            new Middleware(PermissionMiddleware::using(['development-list|development-create|development-edit|development-delete']), only : ['index','show','getAllPaginated']),
+            new Middleware(PermissionMiddleware::using(['development-create']), only : ['store']),
+            new Middleware(PermissionMiddleware::using(['development-edit']), only : ['update']),
+            new Middleware(PermissionMiddleware::using(['development-delete']), only : ['destroy']),
         ];
     }
 

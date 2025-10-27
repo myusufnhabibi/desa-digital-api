@@ -25,10 +25,10 @@ class SocialAssistanceRecepientController extends Controller implements HasMiddl
 
      public static function middleware() {
         return [
-            new Middleware(PermissionMiddleware::using(['social-assistance-recepient-list|social-assistance-recepient-create|social-assistance-recepient-edit|social-assistance-recepient-delete']), ['only' => ['index','show','getAllPaginated']]),
-            new Middleware(PermissionMiddleware::using(['social-assistance-recepient-create']), ['only' => ['store']]),
-            new Middleware(PermissionMiddleware::using(['social-assistance-recepient-edit']), ['only' => ['update']]),
-            new Middleware(PermissionMiddleware::using(['social-assistance-recepient-delete']), ['only' => ['destroy']]),
+            new Middleware(PermissionMiddleware::using(['social-assistance-recepient-list|social-assistance-recepient-create|social-assistance-recepient-edit|social-assistance-recepient-delete']), only: ['index','show','getAllPaginated']),
+            new Middleware(PermissionMiddleware::using(['social-assistance-recepient-create']), only: ['store']),
+            new Middleware(PermissionMiddleware::using(['social-assistance-recepient-edit']), only: ['update']),
+            new Middleware(PermissionMiddleware::using(['social-assistance-recepient-delete']), only: ['destroy']),
         ];
     }
 

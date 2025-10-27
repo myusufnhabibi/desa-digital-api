@@ -25,10 +25,10 @@ class SocialAssistanceController extends Controller implements HasMiddleware
 
     public static function middleware() {
         return [
-            new Middleware(PermissionMiddleware::using(['social-assistance-list|social-assistance-create|social-assistance-edit|social-assistance-delete']), ['only' => ['index','show','getAllPaginated']]),
-            new Middleware(PermissionMiddleware::using(['social-assistance-create']), ['only' => ['store']]),
-            new Middleware(PermissionMiddleware::using(['social-assistance-edit']), ['only' => ['update']]),
-            new Middleware(PermissionMiddleware::using(['social-assistance-delete']), ['only' => ['destroy']]),
+            new Middleware(PermissionMiddleware::using(['social-assistance-list|social-assistance-create|social-assistance-edit|social-assistance-delete']), only: ['index','show','getAllPaginated']),
+            new Middleware(PermissionMiddleware::using(['social-assistance-create']), only: ['store']),
+            new Middleware(PermissionMiddleware::using(['social-assistance-edit']), only: ['update']),
+            new Middleware(PermissionMiddleware::using(['social-assistance-delete']), only: ['destroy']),
         ];
     }
     /**

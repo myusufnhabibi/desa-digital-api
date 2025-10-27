@@ -24,10 +24,10 @@ class FamilyMemberController extends Controller implements HasMiddleware
 
      public static function middleware() {
         return [
-            new Middleware(PermissionMiddleware::using(['family-meber-list|family-meber-create|family-meber-edit|family-meber-delete']), ['only' => ['index','show','getAllPaginated']]),
-            new Middleware(PermissionMiddleware::using(['family-meber-create']), ['only' => ['store']]),
-            new Middleware(PermissionMiddleware::using(['family-meber-edit']), ['only' => ['update']]),
-            new Middleware(PermissionMiddleware::using(['family-meber-delete']), ['only' => ['destroy']]),
+            new Middleware(PermissionMiddleware::using(['family-meber-list|family-meber-create|family-meber-edit|family-meber-delete']), only: ['index','show','getAllPaginated']),
+            new Middleware(PermissionMiddleware::using(['family-meber-create']), only: ['store']),
+            new Middleware(PermissionMiddleware::using(['family-meber-edit']), only: ['update']),
+            new Middleware(PermissionMiddleware::using(['family-meber-delete']), only: ['destroy']),
         ];
     }
     /**

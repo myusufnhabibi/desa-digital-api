@@ -24,10 +24,10 @@ class EventParticipantController extends Controller implements HasMiddleware
 
     public static function middleware() {
         return [
-            new Middleware(PermissionMiddleware::using(['event-participant-list|event-participant-create|event-participant-edit|event-participant-delete']), ['only' => ['index','show','getAllPaginated']]),
-            new Middleware(PermissionMiddleware::using(['event-participant-create']), ['only' => ['store']]),
-            new Middleware(PermissionMiddleware::using(['event-participant-edit']), ['only' => ['update']]),
-            new Middleware(PermissionMiddleware::using(['event-participant-delete']), ['only' => ['destroy']]),
+            new Middleware(PermissionMiddleware::using(['event-participant-list|event-participant-create|event-participant-edit|event-participant-delete']), only: ['index','show','getAllPaginated']),
+            new Middleware(PermissionMiddleware::using(['event-participant-create']), only: ['store']),
+            new Middleware(PermissionMiddleware::using(['event-participant-edit']), only: ['update']),
+            new Middleware(PermissionMiddleware::using(['event-participant-delete']), only: ['destroy']),
         ];
     }
 
