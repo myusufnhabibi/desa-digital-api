@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\SocialAssistance;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,10 +17,17 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         $this->call([
-            UserSeeder::class,
             HeadOfFamilySeeder::class,
             FamilyMemberSeeder::class,
             SocialAssistanceSeeder::class,
+            SocialAssistanceRecepientSeeder::class,
+            DevelopmentSeeder::class,
+            DevelopmentApplicantSeeder::class,
+            EventSeeder::class,
+            EventParticipantSeeder::class,
+            PermissionSeeder::class,
+            RoleSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }

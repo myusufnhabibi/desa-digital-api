@@ -35,6 +35,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get("profile", [\App\Http\Controllers\ProfileController::class, 'index']);
     Route::post("profile", [\App\Http\Controllers\ProfileController::class, 'store']);
     Route::put("profile", [\App\Http\Controllers\ProfileController::class, 'update']);
+
+    Route::post('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+    Route::get('me', [\App\Http\Controllers\AuthController::class, 'me']);
 });
+
+Route::post('login', [\App\Http\Controllers\AuthController::class, 'login']);
+Route::post('register', [\App\Http\Controllers\AuthController::class, 'register']);
+
 
 
